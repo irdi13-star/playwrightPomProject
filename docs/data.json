@@ -1,0 +1,27 @@
+{
+  "appName": "Test",
+  "updatedAt": "18/07/2025 08:51",
+  "testData": {
+    "gherkin-test.spec.ts": {
+      "filepath": "gherkin-test.spec.ts",
+      "tests": [
+        {
+          "title": "Main Page E2E: should do something",
+          "tags": [
+            "smoke",
+            "gherkin"
+          ],
+          "line": 4,
+          "steps": [
+            "Given User opens the Playwright homepage",
+            "When Click 'Get Started' and verify navigation",
+            "Then Go back to homepage and verify homepage title",
+            "Then Open GitHub repo in new tab and verify",
+            "Then Open Issues in new tab and verify",
+            "Then Close the page"
+          ]
+        }
+      ]
+    }
+  }
+}
