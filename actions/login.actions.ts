@@ -11,15 +11,15 @@ export default class LoginActions extends BaseAction {
     this.login = new LoginPage(page, context);
   }
 
-  async fillEmail() {
-    const emailIn = this.login.emailInputField;
-    await emailIn.fill(credentials.customerDetails.username_default);
+  async fillEmail(username: string) {
+    const emailIn = this.login.usernameInputField;
+    await emailIn.fill(username);
     expect(emailIn).not.toBe("");
   }
 
-  async fillPassword() {
+  async fillPassword(passwrod: string) {
     await this.login.passwordInputField.fill(
-      credentials.customerDetails.password_default,
+      passwrod
     );
   }
 
@@ -27,9 +27,16 @@ export default class LoginActions extends BaseAction {
     await this.login.loginButton.click();
   }
 
-  async completeForm() {
-    await this.fillEmail();
-    await this.fillPassword();
+  async completeFormWithValidData() {
+    await this.fillEmail(credentials.customerDetails.username_default);
+    await this.fillPassword(credentials.customerDetails.password_default);
+    await this.pressSubmitButton();
+    await expect(this.page.url()).toBe(routes.successfullLoggedInPage);
+  }
+
+  async completeFormWithCustomData(username: string, password: string) {
+    await this.fillEmail(username);
+    await this.fillPassword(password);
     await this.pressSubmitButton();
   }
 }
