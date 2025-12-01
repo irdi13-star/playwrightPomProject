@@ -1,4 +1,4 @@
-import BasePage from "../pages/base.page";
+import BasePage from "../../pages/base.page";
 
 export default class BaseActions extends BasePage {
   async navigateTo(url: string) {

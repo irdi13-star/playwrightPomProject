@@ -1,8 +1,9 @@
 import { BrowserContext, expect, Page } from "@playwright/test";
 
-import BaseActions from "./base.actions";
-import CommonPage from "../pages/common.page";
-import { Utils } from "../utils/utils.type"
+import BaseActions from "../main_actions/base.actions";
+import CommonPage from "../../pages/common.page";
+import { Utils } from "../../utils/utils.type"
+import exp from "constants";
 
 export default class CommonActions extends BaseActions {
   commonPage: CommonPage;
@@ -98,5 +99,51 @@ export default class CommonActions extends BaseActions {
         `❌ Link with given URL '${expectedLink}' was NOT found on page!`
       );
     }
+  }
+
+  public async paragraphIsVisible(label: string) {
+    await expect(
+      this.commonPage.paragraphByText(label),
+      `Expecting paragraph '${label}' to be visible`
+    ).toBeVisible();
+  }
+
+  async clickLinkedNamedButton(buttonTitle: string) {
+    const button = await this.commonPage.linkedButton(buttonTitle);
+    await expect(
+      button,
+      `Wait for button with title '${buttonTitle}' to be visible`
+    ).toBeVisible();
+    await button.click();
+  }
+
+  async linkedButtonIsVisible(
+    buttonTitle: string,
+    checkClickable: boolean = false
+  ) {
+    const button = this.commonPage.linkedButton(buttonTitle);
+
+    await expect(
+      button,
+      `Expecting to see a button '${buttonTitle}'`
+    ).toBeVisible();
+
+    if (checkClickable) {
+      await expect(
+        button,
+        `Expecting the button '${buttonTitle}' to be enabled`
+      ).toBeEnabled();
+    }
+  }
+
+  async linkedButtonIsNotVisible(buttonTitle: string) {
+    await expect(
+      this.commonPage.linkedButton(buttonTitle),
+      `Waiting the button '${buttonTitle}' to not be visible`
+    ).not.toBeVisible();
+  }
+
+  async expectingError(errorLabel: string) {
+    await expect(this.commonPage.errorLabel(errorLabel)).toBeVisible();
   }
 }

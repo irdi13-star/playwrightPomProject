@@ -1,7 +1,7 @@
 import { BrowserContext, Page } from "@playwright/test";
-import BaseActions from "../actions/base.actions";
-import LoginActions from "./login.actions";
-import CommonActions from "./common.actions";
+import BaseActions from "../actions/main_actions/base.actions";
+import LoginActions from "./page_actions/login.actions";
+import CommonActions from "./main_actions/common.actions";
 
 export default class App {
   base: BaseActions;

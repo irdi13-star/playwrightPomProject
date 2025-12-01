@@ -1,9 +1,10 @@
 import { Page, BrowserContext, expect } from "@playwright/test";
-import LoginPage from "../pages/login.page";
-import BaseAction from "../actions/base.actions";
-import credentials from "../resources/testData.json" with { type: "json" };
+import LoginPage from "../../pages/login.page";
+import BaseActions from "../main_actions/base.actions";
+import credentials from "../../resources/testData.json" with { type: "json" };
+import routes from "../../utils/routes.utils";
 
-export default class LoginActions extends BaseAction {
+export default class LoginActions extends BaseActions {
   login: LoginPage;
 
   constructor(page: Page, context: BrowserContext) {

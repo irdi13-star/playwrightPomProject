@@ -10,7 +10,7 @@ export default class CommonPage extends BasePage {
   headingTitle(headingTitle: string) {
     return this.page
       .locator(
-        `span:has-text("${headingTitle}"), h4:has-text("${headingTitle}"), h1:has-text("${headingTitle}")`
+        `span:has-text("${headingTitle}"), h1:has-text("${headingTitle}"), h2:has-text("${headingTitle}"), h4:has-text("${headingTitle}")`
       )
       .first();
   }
@@ -29,5 +29,17 @@ export default class CommonPage extends BasePage {
 
   linkOnPage(expectedLink: string) {
     return this.page.locator(`a[href="${expectedLink}"]`);
-  } 
+  }
+
+  paragraphByText(label: string) {
+    return this.page.getByText(`${label}`);
+  }
+
+  linkedButton(label: string) {
+    return this.page.getByRole("link", { name: `${label}` });
+  }
+
+  errorLabel(label: string) {
+    return this.page.locator('#error')
+  }
 }
