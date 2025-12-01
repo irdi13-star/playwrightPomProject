@@ -10,7 +10,7 @@ export default class CommonPage extends BasePage {
   headingTitle(headingTitle: string) {
     return this.page
       .locator(
-        `span:has-text("${headingTitle}"), h1:has-text("${headingTitle}"), h2:has-text("${headingTitle}"), h4:has-text("${headingTitle}")`
+        `span:has-text("${headingTitle}"), h1:has-text("${headingTitle}"), h2:has-text("${headingTitle}"), h4:has-text("${headingTitle}")`,
       )
       .first();
   }
@@ -40,6 +40,6 @@ export default class CommonPage extends BasePage {
   }
 
   errorLabel(label: string) {
-    return this.page.locator('#error')
+    return this.page.locator("#error");
   }
 }

@@ -19,9 +19,7 @@ export default class LoginActions extends BaseActions {
   }
 
   async fillPassword(passwrod: string) {
-    await this.login.passwordInputField.fill(
-      passwrod
-    );
+    await this.login.passwordInputField.fill(passwrod);
   }
 
   async pressSubmitButton() {

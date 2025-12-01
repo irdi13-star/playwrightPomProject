@@ -11,6 +11,6 @@ export default class App {
   constructor(page: Page, context: BrowserContext) {
     this.base = new BaseActions(page, context);
     this.login = new LoginActions(page, context);
-    this.common = new CommonActions(page,context)
+    this.common = new CommonActions(page, context);
   }
 }

@@ -7,10 +7,7 @@
       "tests": [
         {
           "title": "Main Page E2E: should do something",
-          "tags": [
-            "smoke",
-            "gherkin"
-          ],
+          "tags": ["smoke", "gherkin"],
           "line": 4,
           "steps": [
             "Given User opens the Playwright homepage",
