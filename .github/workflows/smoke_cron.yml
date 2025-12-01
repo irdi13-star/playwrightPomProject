@@ -61,7 +61,7 @@ jobs:
 
       # we now download the reports uploaded previously to merge them and create one single html report
       - name: Download blob reports from GitHub Actions Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: all-blob-reports # name of the file stored as artifact (as uploaded at the previous job)
           path: all-blob-reports # name of the folder where the download will be saved
