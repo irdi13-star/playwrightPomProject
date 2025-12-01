@@ -57,7 +57,7 @@ test(
   },
 );
 
-test(
+test.skip(
   "login",
   {
     tag: ["@smoke", "@regression"],

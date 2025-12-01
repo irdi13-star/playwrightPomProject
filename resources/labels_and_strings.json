@@ -1,0 +1,15 @@
+{
+  "loginPage": {
+    "headerTitle": "Test login",
+    "invalidUsernameError": "Your username is invalid!",
+    "invalidPasswordError": "Your password is invalid!"
+  },
+  "successfullyLoggedInPage": {
+    "headerTitle": "Logged In Successfully",
+    "descriptionLabel": "Congratulations student. You successfully logged in!",
+    "logoutButton": "Log out"
+  },
+  "commonStrings": {
+    "submitButtonTitle": "Submit"
+  }
+}

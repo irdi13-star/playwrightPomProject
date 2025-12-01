@@ -1,6 +1,7 @@
-import { expect } from "@playwright/test";
 import test from "../e2e/test";
 import credential from "../resources/testData.json" with { type: "json" };
+import labels from "../resources/labels_and_strings.json" with { type: "json" };
+import routes from "../utils/routes.utils";
 
 test.afterEach(async ({ app }, testInfo) => {
   if (testInfo.status !== testInfo.expectedStatus) {
@@ -14,30 +15,66 @@ test.afterEach(async ({ app }, testInfo) => {
 });
 
 test.describe(
-  "OVO Energy Cookie Overload and Size Test",
+  "Login test with POM",
   {
     tag: ["@first"],
   },
   () => {
-    test("login", async ({ page }) => {
-      await page.goto("https://letcode.in/signin");
-      await page
-        .getByRole("textbox", { name: "Enter registered email" })
-        .fill(credential.customerDetails.username_default);
-      await page
-        .getByPlaceholder("Password")
-        .fill(credential.customerDetails.password_default);
-      await page.getByRole("button", { name: "LOGIN" }).click();
-      await page.waitForURL("https://letcode.in/");
-      await expect(page).toHaveTitle("LetCode with Koushik");
-      await expect(page.getByRole("link", { name: "Sign out" })).toBeVisible();
+    test("Login/Logout successfully", async ({ app }) => {
+      await test.step("Access login page and fill the form with valid credentials", async () => {
+        await app.base.navigateTo(routes.loginPageTests);
+        await app.common.headingIsVisible(labels.loginPage.headerTitle);
+        await app.login.completeFormWithValidData();
+      });
+
+      await test.step("Verify the successfully page", async () => {
+        await app.common.headingIsVisible(
+          labels.successfullyLoggedInPage.headerTitle,
+        );
+        await app.common.paragraphIsVisible(
+          labels.successfullyLoggedInPage.descriptionLabel,
+        );
+        await app.common.linkedButtonIsVisible(
+          labels.successfullyLoggedInPage.logoutButton,
+        );
+      });
+
+      await test.step("Verify log out action", async () => {
+        await app.common.clickLinkedNamedButton(
+          labels.successfullyLoggedInPage.logoutButton,
+        );
+        await app.common.headingIsVisible(labels.loginPage.headerTitle);
+      });
     });
 
-    test("Login Page - ValidCredentials", async ({ page, app }) => {
-      await app.base.navigateTo("https://letcode.in");
-      await page.getByRole("link", { name: "Log in" }).click();
-      await app.login.completeForm();
-      await expect(page.getByRole("link", { name: "Sign out" })).toBeEnabled();
+    test("Incorrect credentials", async ({ app }) => {
+      await test.step("Navigate to login page and fill form with invalid credentials", async () => {
+        await app.base.navigateTo(routes.loginPageTests);
+        await app.login.completeFormWithCustomData(
+          credential.customerDetails.invalid_username,
+          credential.customerDetails.invalid_passwrod,
+        );
+      });
+
+      await test.step("Verify the error message", async () => {
+        await app.common.headingIsVisible(labels.loginPage.headerTitle);
+        await app.common.expectingError(labels.loginPage.invalidUsernameError);
+      });
+    });
+
+    test("Incorrect password", async ({ app }) => {
+      await test.step("Navigate to login page and fill form with invalid credentials", async () => {
+        await app.base.navigateTo(routes.loginPageTests);
+        await app.login.completeFormWithCustomData(
+          credential.customerDetails.username_default,
+          credential.customerDetails.invalid_passwrod,
+        );
+      });
+
+      await test.step("Verify the error message", async () => {
+        await app.common.headingIsVisible(labels.loginPage.headerTitle);
+        await app.common.expectingError(labels.loginPage.invalidPasswordError);
+      });
     });
   },
 );

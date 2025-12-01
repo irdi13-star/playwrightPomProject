@@ -1,6 +1,8 @@
 {
   "customerDetails": {
-    "username_default": "touchdiamond58+33@gmail.com",
-    "password_default": "Intelcorei3"
+    "username_default": "student",
+    "password_default": "Password123",
+    "invalid_username": "invalid_username",
+    "invalid_passwrod": "invalid_password"
   }
 }

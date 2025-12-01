@@ -1,14 +1,14 @@
 import BasePage from "./base.page";
 
 export default class LoginPage extends BasePage {
-  get emailInputField() {
-    return this.page.getByRole("textbox", { name: "Enter registered email" });
+  get usernameInputField() {
+    return this.page.locator("id=username");
   }
 
   get passwordInputField() {
-    return this.page.getByPlaceholder("Enter password");
+    return this.page.locator("id=password");
   }
   get loginButton() {
-    return this.page.getByRole("button", { name: "LOGIN" });
+    return this.page.getByRole("button", { name: "Submit" });
   }
 }
