@@ -155,7 +155,7 @@ jobs:
           # -----------------------------
           JSON=$(jq -n \
             --arg title "E2E Tests Completed" \
-            --arg desc "**Status:** $STATUS_EMOJI $STATUS     **Running time:** $TIMESTAMP\
+            --arg desc "**Status:** $STATUS_EMOJI $STATUS     **Running time:** $TIMESTAMP" \
             --arg branch "$BRANCH" \
             --arg run "$RUN_URL" \
             --arg reportLink "$REPORT" \
