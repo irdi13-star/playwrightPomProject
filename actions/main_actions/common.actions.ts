@@ -25,7 +25,7 @@ export default class CommonActions extends BaseActions {
     });
     expect(
       this.commonPage.page.url(),
-      `Expecting url to contain: '${route}'`
+      `Expecting url to contain: '${route}'`,
     ).toContain(route);
   }
 
@@ -41,26 +41,26 @@ export default class CommonActions extends BaseActions {
     const button = await this.commonPage.namedButton(buttonTitle);
     await expect(
       button,
-      `Wait for button with title '${buttonTitle}' to be visible`
+      `Wait for button with title '${buttonTitle}' to be visible`,
     ).toBeVisible();
     await button.click();
   }
 
   async namedButtonIsVisible(
     buttonTitle: string,
-    checkClickable: boolean = false
+    checkClickable: boolean = false,
   ) {
     const button = this.commonPage.namedButton(buttonTitle);
 
     await expect(
       button,
-      `Expecting to see a button '${buttonTitle}'`
+      `Expecting to see a button '${buttonTitle}'`,
     ).toBeVisible();
 
     if (checkClickable) {
       await expect(
         button,
-        `Expecting the button '${buttonTitle}' to be enabled`
+        `Expecting the button '${buttonTitle}' to be enabled`,
       ).toBeEnabled();
     }
   }
@@ -68,14 +68,14 @@ export default class CommonActions extends BaseActions {
   async namedButtonIsNotVisible(buttonTitle: string) {
     await expect(
       this.commonPage.namedButton(buttonTitle),
-      `Waiting the button '${buttonTitle}' to not be visible`
+      `Waiting the button '${buttonTitle}' to not be visible`,
     ).not.toBeVisible();
   }
 
   async stringGotByTextIsVisible(textToBeVisible: string) {
     await expect(
       this.commonPage.page.getByText(textToBeVisible),
-      `Expecting to see text '${textToBeVisible}'`
+      `Expecting to see text '${textToBeVisible}'`,
     ).toBeVisible();
   }
 
@@ -89,7 +89,7 @@ export default class CommonActions extends BaseActions {
     const paragraph = await this.commonPage.paragraphByText(label);
     await expect(
       paragraph,
-      `Expecting paragraph '${label}' to be visible`
+      `Expecting paragraph '${label}' to be visible`,
     ).toBeVisible();
     return paragraph;
   }
@@ -97,10 +97,10 @@ export default class CommonActions extends BaseActions {
   async verifyParagraphsLinkedLabel(
     labelText: string,
     linkText: string,
-    expectedLink: string
+    expectedLink: string,
   ) {
     const paragraph = await this.paragraphIsVisible(labelText);
-    const link = this.commonPage.linkInsideElement(paragraph, linkText)
+    const link = this.commonPage.linkInsideElement(paragraph, linkText);
 
     await expect(link).toBeVisible();
     await expect(link).toHaveAttribute("href", expectedLink);
@@ -112,7 +112,7 @@ export default class CommonActions extends BaseActions {
 
     if (!(await linkLocator.isVisible())) {
       throw new Error(
-        `❌ Link with given URL '${expectedLink}' was NOT found on page!`
+        `❌ Link with given URL '${expectedLink}' was NOT found on page!`,
       );
     }
   }
@@ -121,26 +121,26 @@ export default class CommonActions extends BaseActions {
     const button = await this.commonPage.linkedButton(buttonTitle);
     await expect(
       button,
-      `Wait for button with title '${buttonTitle}' to be visible`
+      `Wait for button with title '${buttonTitle}' to be visible`,
     ).toBeVisible();
     await button.click();
   }
 
   async linkedButtonIsVisible(
     buttonTitle: string,
-    checkClickable: boolean = false
+    checkClickable: boolean = false,
   ) {
     const button = this.commonPage.linkedButton(buttonTitle);
 
     await expect(
       button,
-      `Expecting to see a button '${buttonTitle}'`
+      `Expecting to see a button '${buttonTitle}'`,
     ).toBeVisible();
 
     if (checkClickable) {
       await expect(
         button,
-        `Expecting the button '${buttonTitle}' to be enabled`
+        `Expecting the button '${buttonTitle}' to be enabled`,
       ).toBeEnabled();
     }
   }
@@ -148,7 +148,7 @@ export default class CommonActions extends BaseActions {
   async linkedButtonIsNotVisible(buttonTitle: string) {
     await expect(
       this.commonPage.linkedButton(buttonTitle),
-      `Waiting the button '${buttonTitle}' to not be visible`
+      `Waiting the button '${buttonTitle}' to not be visible`,
     ).not.toBeVisible();
   }
 
