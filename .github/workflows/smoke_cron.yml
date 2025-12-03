@@ -45,7 +45,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       timestamp: ${{ steps.timestampid.outputs.timestamp }}
-      timestamp_moldova: ${{ steps.moldova_time.outputs.timestamp }}
 
     steps:
       # We want a unique identifier to be used when we create subdirectories for our github pages with reports
@@ -128,15 +127,10 @@ jobs:
           # Collect metadata
           # -----------------------------
           STATUS="${{ needs.setup-and-run-tests.result }}"
-          TIMESTAMP="${{ needs.merge-reports-and-upload.outputs.timestamp_moldova }}"
-          TIMESTAMP_UTC="${{ needs.merge-reports-and-upload.outputs.timestamp }}"
+          TIMESTAMP="${{ steps.timestampid.outputs.timestamp }}"
           BRANCH="${GITHUB_REF##*/}"
-          COMMIT_SHA="${GITHUB_SHA}"
-          SHORT_SHA=$(echo $COMMIT_SHA | cut -c1-7)
           RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          REPORT="https://${{ github.repository_owner }}.github.io/playwrightPomProject/${TIMESTAMP_UTC}/"
-          REPORT_ARTIFACT="playwright-report-${TIMESTAMP_UTC}"
-          REPOSITORY="${{ github.repository }}"
+          REPORT="https://${{ github.repository_owner }}.github.io/playwrightPomProject/${TIMESTAMP}/"
 
           # -----------------------------
           # Colors (Discord is decimal RGB)
@@ -161,12 +155,9 @@ jobs:
           # -----------------------------
           JSON=$(jq -n \
             --arg title "E2E Tests Completed" \
-            --arg desc "**Status:** $STATUS_EMOJI $STATUS\n**Timestamp:** $TIMESTAMP" \
+            --arg desc "**Status:** $STATUS_EMOJI $STATUS     **Running time:** ${TIMESTAMP}\
             --arg branch "$BRANCH" \
-            --arg commit "$SHORT_SHA" \
             --arg run "$RUN_URL" \
-            --arg repo "$REPOSITORY" \
-            --arg artifact "$REPORT_ARTIFACT" \
             --arg reportLink "$REPORT" \
             --arg color "$COLOR" '
             {
@@ -178,7 +169,6 @@ jobs:
                   { "name": "Branch", "value": $branch, "inline": true },
                   { "name": "Report", "value": "[Link available in 2 mins](\($reportLink))", "inline": true },
                   { "name": "Workflow Run", "value": "[Open Run](\($run))", "inline": false },
-                  { "name": "HTML Report", "value": "Artifact: **\($artifact)**", "inline": false }
                 ],
                 "footer": { "text": "GitHub Actions • Playwright E2E" }
               }]
