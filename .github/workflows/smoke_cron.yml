@@ -78,12 +78,6 @@ jobs:
           path: playwright-report
           retention-days: 14
 
-  send-telegram-report:
-    needs: merge-reports-and-upload
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
       - name: Push the new files to github pages
         # This will create a separate branch called gh-pages where it will store only reports. And from where it will push all future changes
         # to github pages. Having a separate branch will keep the reports and changes commits separate to your main/master
@@ -136,3 +130,4 @@ jobs:
                -X POST \
                -d "{\"content\": \"$MESSAGE\"}" \
                "${{ secrets.DISCORD_WEBHOOK }}"
+ 
