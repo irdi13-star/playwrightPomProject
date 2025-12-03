@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Playwright tests
         id: e2e_tests
-        run: npx playwright test --grep @smoke --project=chromium --reporter=json --output=json-report
+        run: npx playwright test --grep @smoke --project=chromium
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
@@ -36,14 +36,6 @@ jobs:
         with:
           name: all-blob-reports
           path: blob-report
-          retention-days: 14
-
-      - name: Upload JSON report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: json-report
-          path: json-report/results.json
           retention-days: 14
 
   merge-reports-and-upload:
@@ -176,6 +168,7 @@ jobs:
             --arg run "$RUN_URL" \
             --arg repo "$REPOSITORY" \
             --arg artifact "$REPORT_ARTIFACT" \
+            --arg reportLink "$REPORT" \
             --arg color "$COLOR" '
             {
               "embeds": [{
@@ -185,6 +178,7 @@ jobs:
                 "fields": [
                   { "name": "Repository", "value": $repo, "inline": true },
                   { "name": "Branch", "value": $branch, "inline": true },
+                  { "name": "Report", "value": $reportLink, "inline": true },
                   { "name": "Commit", "value": ("`\($commit)` — " + $msg), "inline": false },
                   { "name": "Author", "value": $author, "inline": true },
                   { "name": "Workflow Run", "value": "[Open Run](" + $run + ")", "inline": false },
