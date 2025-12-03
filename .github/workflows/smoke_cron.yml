@@ -168,7 +168,7 @@ jobs:
                 "fields": [
                   { "name": "Branch", "value": $branch, "inline": true },
                   { "name": "Report", "value": "[Link available in 2 mins](\($reportLink))", "inline": true },
-                  { "name": "Workflow Run", "value": "[Open Run](\($run))", "inline": false },
+                  { "name": "Workflow Run", "value": "[Open Run](\($run))", "inline": false }
                 ],
                 "footer": { "text": "GitHub Actions • Playwright E2E" }
               }]
