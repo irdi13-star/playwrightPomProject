@@ -1,7 +1,8 @@
-name: Playwright Tests
+name: Pull request verifications
 on:
   pull_request:
     branches: [main, master]
+
 jobs:
   test-typescript:
     name: TypeScript Tests
