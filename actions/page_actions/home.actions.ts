@@ -1,6 +1,5 @@
 import BaseActions from "../main_actions/base.actions";
-import credentials from "../../resources/testData.json" with { type: "json" };
-import routes from "../../utils/routes.utils";
+import labels from "../../resources/labels_and_strings.json" with { type: "json" };
 import HomePage from "../../pages/home.page";
 import { BrowserContext, expect, Page } from "@playwright/test";
 
@@ -15,11 +14,11 @@ export default class HomeActions extends BaseActions {
   async verifyPrimaryMenuList() {
     await expect(this.home.primaryMenuList).toHaveCount(5);
     await expect(this.home.primaryMenuList).toHaveText([
-      "Home",
-      "Practice",
-      "Courses",
-      "Blog",
-      "Contact",
+      labels.homePgae.menuListLabels.home,
+      labels.homePgae.menuListLabels.practice,
+      labels.homePgae.menuListLabels.courses,
+      labels.homePgae.menuListLabels.blog,
+      labels.homePgae.menuListLabels.contact,
     ]);
   }
 }
