@@ -17,7 +17,7 @@ test.afterEach(async ({ app }, testInfo) => {
 test.describe(
   "Login test with POM",
   {
-    tag: ["@first"],
+    tag: ["@smoke"],
   },
   () => {
     test("Login/Logout successfully", async ({ app }) => {

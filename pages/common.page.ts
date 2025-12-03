@@ -1,4 +1,4 @@
-import { BrowserContext, Page } from "@playwright/test";
+import { BrowserContext, Locator, Page } from "@playwright/test";
 
 import BasePage from "./base.page";
 
@@ -31,8 +31,13 @@ export default class CommonPage extends BasePage {
     return this.page.locator(`a[href="${expectedLink}"]`);
   }
 
+  linkInsideElement(element: Locator, linkText: string): Locator {
+    return element.locator(`a:has-text("${linkText}")`);
+  }
+
   paragraphByText(label: string) {
-    return this.page.getByText(`${label}`);
+    // return this.page.getByText(`${label}`);
+    return this.page.locator(`p:has-text("${label}")`);
   }
 
   linkedButton(label: string) {

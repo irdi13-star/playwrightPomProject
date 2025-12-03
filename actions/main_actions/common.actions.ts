@@ -79,14 +79,30 @@ export default class CommonActions extends BaseActions {
     ).toBeVisible();
   }
 
-  async verifyLinkedLabel(
+  async verifyLinkedLabel(linkText: string, expectedLink: string) {
+    const link = this.commonPage.firstLinkedText(linkText);
+    await expect(link, `Looking for link '${linkText}'`).toBeVisible();
+    await expect(link).toHaveAttribute("href", expectedLink);
+  }
+
+  public async paragraphIsVisible(label: string) {
+    const paragraph = await this.commonPage.paragraphByText(label);
+    await expect(
+      paragraph,
+      `Expecting paragraph '${label}' to be visible`,
+    ).toBeVisible();
+    return paragraph;
+  }
+
+  async verifyParagraphsLinkedLabel(
     labelText: string,
     linkText: string,
     expectedLink: string,
   ) {
-    await this.stringGotByTextIsVisible(labelText);
-    const link = this.commonPage.firstLinkedText(linkText);
-    await expect(link, `Looking for link '${linkText}'`).toBeVisible();
+    const paragraph = await this.paragraphIsVisible(labelText);
+    const link = this.commonPage.linkInsideElement(paragraph, linkText);
+
+    await expect(link).toBeVisible();
     await expect(link).toHaveAttribute("href", expectedLink);
   }
 
@@ -99,13 +115,6 @@ export default class CommonActions extends BaseActions {
         `❌ Link with given URL '${expectedLink}' was NOT found on page!`,
       );
     }
-  }
-
-  public async paragraphIsVisible(label: string) {
-    await expect(
-      this.commonPage.paragraphByText(label),
-      `Expecting paragraph '${label}' to be visible`,
-    ).toBeVisible();
   }
 
   async clickLinkedNamedButton(buttonTitle: string) {

@@ -1,4 +1,49 @@
 {
+  "homePgae": {
+    "headerTitle": "Hello",
+    "welcomeSection": {
+      "header": "Welcome to Practice Test Automation!",
+      "descriptionLabel": "I’m Dmitry Shyshkin, your guide on the path to a thriving QA career. Effortlessly master Selenium WebDriver and test automation to enhance your skills and increase your earnings."
+    },
+    "experienceSection": {
+      "header": "Experience and Expertise",
+      "descriptionLabel": "As a Principal Software Development Engineer in Test, I bring over a decade of experience in automating Web UI, API, and Mobile tests using tools like Selenium WebDriver, Appium, Postman, RestAssured, and more. I began my journey as a manual QA engineer and quickly developed a passion for test automation. Having served as the lead test automation expert in various projects, I’m confident in my ability to help you excel in test automation."
+    },
+    "beyondSection": {
+      "header": "Beyond Test Automation",
+      "descriptionLabel": "Not only have I automated tests, but I’ve also applied automation to job searches and even finding cheaper flights! Now, I’m eager to share this passion and knowledge with you."
+    },
+    "coursesSection": {
+      "header": "Courses and Achievements",
+      "descriptionLabel": "In 2017, I started sharing my test automation expertise through video courses, beginning with a Selenium WebDriver tutorial on YouTube. Today, I offer nine courses with over 70,000 students, including a BestSeller XPath course and a HighestRated Selenium course. With a 4.7 out of 5 instructor rating, I’m grateful to every student who has joined me on this journey.",
+      "nineCoursesLinkedLabel": "nine courses with over 70,000 students",
+      "bestSellerLinkedLabel": "BestSeller XPath course",
+      "highestRatedLinkedLabel": "HighestRated Selenium course"
+    },
+    "resourcesSection": {
+      "header": "A Resourceful Website",
+      "descriptionLabel": "This website was carefully crafted to host a diverse selection of articles, standalone lectures, tips, and examples for those interested in test automation. Moreover, with a practical platform already established, test automation beginners can easily put their skills into practice.",
+      "articlesLinkedLabel": "diverse selection of articles, standalone lectures, tips, and examples",
+      "practicalPlatformLinkedLabel": "practical platform"
+    },
+    "lookingAheadSection": {
+      "header": "Looking Ahead",
+      "descriptionLabel": "As we look ahead, I’m thrilled about the future of Practice Test Automation and delighted to have you on board!"
+    },
+    "exploreAndLearnSection": {
+      "header": "Explore and Learn",
+      "descriptionLabel": "Please be sure to visit our BLOG for engaging articles, speeches, and tutorials, and don’t miss our COURSES, designed to enrich your learning experience.",
+      "blogLinkedLabel": "Blog",
+      "coursesLinkedLabel": "Courses"
+    },
+    "menuListLabels": {
+      "home": "Home",
+      "practice": "Practice",
+      "courses": "Courses",
+      "blog": "Blog",
+      "contact": "Contact"
+    }
+  },
   "loginPage": {
     "headerTitle": "Test login",
     "invalidUsernameError": "Your username is invalid!",
