@@ -39,7 +39,7 @@ jobs:
 
       - name: Run Playwright tests
         id: e2e_tests
-        run: npx playwright test --grep @smoke --project=chromium
+        run: npx playwright test --grep @pr_check --project=chromium
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
