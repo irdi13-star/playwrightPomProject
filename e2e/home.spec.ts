@@ -16,7 +16,7 @@ test.afterEach(async ({ app }, testInfo) => {
 test.describe(
   "Home page with POM",
   {
-    tag: ["@smoke"],
+    tag: ["@smoke", "@pr_check"],
   },
   () => {
     test("Home page full verification", async ({ app }) => {
