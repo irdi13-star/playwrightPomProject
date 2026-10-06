@@ -1,7 +1,6 @@
 import { BrowserContext, Locator, Page } from "@playwright/test";
 import BasePage from "./base.page.js";
 
-
 export default class CommonPage extends BasePage {
   [x: string]: any;
   constructor(page: Page, context: BrowserContext) {

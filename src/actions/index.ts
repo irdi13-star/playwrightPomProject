@@ -4,7 +4,6 @@ import CommonActions from "./main_actions/common.actions.js";
 import HomeActions from "./page_actions/home.actions.js";
 import LoginActions from "./page_actions/login.actions.js";
 
-
 export default class App {
   base: BaseActions;
   common: CommonActions;
