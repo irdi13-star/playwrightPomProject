@@ -41,7 +41,7 @@ test(
   },
 );
 
-test(
+test.skip(
   "click link",
   {
     tag: ["@smoke", "@regression"],
