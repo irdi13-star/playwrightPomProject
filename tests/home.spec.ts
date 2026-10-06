@@ -1,6 +1,6 @@
-import test from "../e2e/test";
-import labels from "../resources/labels_and_strings.json" with { type: "json" };
-import routes from "../utils/routes.utils";
+import test from "../src/fixtures/test.js";
+import labels from "../src/resources/labels_and_strings.json" with { type: "json" };
+import routes from "../src/utils/routes.utils.js";
 
 test.afterEach(async ({ app }, testInfo) => {
   if (testInfo.status !== testInfo.expectedStatus) {

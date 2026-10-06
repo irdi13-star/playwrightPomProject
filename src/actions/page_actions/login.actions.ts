@@ -1,15 +1,15 @@
 import { Page, BrowserContext, expect } from "@playwright/test";
-import LoginPage from "../../pages/login.page";
-import BaseActions from "../main_actions/base.actions";
 import credentials from "../../resources/testData.json" with { type: "json" };
-import routes from "../../utils/routes.utils";
+import LoginPage from "../../pages/login.page.js";
+import routes from "../../utils/routes.utils.js";
+import BaseActions from "../main_actions/base.actions.js";
 
 export default class LoginActions extends BaseActions {
   login: LoginPage;
 
   constructor(page: Page, context: BrowserContext) {
-    super(page, context);
-    this.login = new LoginPage(page, context);
+    super(page);
+    this.login = new LoginPage(page);
   }
 
   async fillEmail(username: string) {

@@ -59,3 +59,5 @@ Thumbs.db
 #castle config
 **/*/config.json
 
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
