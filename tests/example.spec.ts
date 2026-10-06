@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import credential from "../resources/testData.json" with { type: "json" };
+import credential from "../src/resources/testData.json" with { type: "json" };
 
 test.afterEach(async ({ page }, testInfo) => {
   if (testInfo.status !== testInfo.expectedStatus) {

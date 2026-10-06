@@ -15,8 +15,8 @@
     },
     "coursesSection": {
       "header": "Courses and Achievements",
-      "descriptionLabel": "In 2017, I started sharing my test automation expertise through video courses, beginning with a Selenium WebDriver tutorial on YouTube. Today, I offer nine courses with over 70,000 students, including a BestSeller XPath course and a HighestRated Selenium course. With a 4.7 out of 5 instructor rating, I’m grateful to every student who has joined me on this journey.",
-      "nineCoursesLinkedLabel": "nine courses with over 70,000 students",
+      "descriptionLabel": "In 2017, I started sharing my test automation expertise through video courses, beginning with a Selenium WebDriver tutorial on YouTube. Today, I offer nine courses with over 100,000 students, including a BestSeller XPath course and a HighestRated Selenium course. With a 4.7 out of 5 instructor rating, I’m grateful to every student who has joined me on this journey.",
+      "nineCoursesLinkedLabel": "nine courses with over 100,000 students",
       "bestSellerLinkedLabel": "BestSeller XPath course",
       "highestRatedLinkedLabel": "HighestRated Selenium course"
     },
@@ -40,6 +40,7 @@
       "home": "Home",
       "practice": "Practice",
       "courses": "Courses",
+      "aiWorkshop": "AI Workshop",
       "blog": "Blog",
       "contact": "Contact"
     }

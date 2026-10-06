@@ -3,8 +3,8 @@ import { defineConfig, devices } from "@playwright/test";
 const IS_CI = !!process.env["CI"];
 
 export default defineConfig({
-  testDir: "./e2e",
-  testMatch: "*.spec.ts",
+  testDir: "./tests",
+  // testMatch: "*.spec.ts",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

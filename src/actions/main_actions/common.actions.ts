@@ -1,15 +1,15 @@
+// import { BrowserContext, expect, Page } from "@playwright/test";
+// import BaseActions from "../main_actions/base.actions.js";
+import { Utils } from "../../utils/utils.type.js";
+import CommonPage from "../../pages/common.page.js";
 import { BrowserContext, expect, Page } from "@playwright/test";
-
-import BaseActions from "../main_actions/base.actions";
-import CommonPage from "../../pages/common.page";
-import { Utils } from "../../utils/utils.type";
-import exp from "constants";
+import BaseActions from "./base.actions.js";
 
 export default class CommonActions extends BaseActions {
   commonPage: CommonPage;
 
   constructor(page: Page, context: BrowserContext) {
-    super(page, context);
+    super(page);
     this.commonPage = new CommonPage(page, context);
   }
   async headingIsVisible(pageTitle: string) {

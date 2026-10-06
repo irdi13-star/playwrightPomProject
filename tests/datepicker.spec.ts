@@ -1,6 +1,4 @@
-import { expect } from "@playwright/test";
-import test from "./test";
-import { beforeEach } from "node:test";
+import test from "../src/fixtures/test.js";
 
 test.beforeEach(async ({ app }) => {
   await test.step("Navigate to calendar", async () => {
@@ -22,7 +20,6 @@ test.afterEach(async ({ app }, testInfo) => {
 test("Select tomorrow's and next month's date from calendar", async ({
   page,
 }) => {
-  // Gasim ziua de maine bazandune pe ziua curenta
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
